@@ -1,1 +1,1 @@
-This is my project demo. use Manager student
+This is my project demo. it' name Manager student
