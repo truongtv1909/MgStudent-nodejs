@@ -1,0 +1,34 @@
+extends ../layout/common
+//- extends ./layout/common
+block common
+    .container
+        h1 student component
+            .d-flex.align-items-center
+                a.btn.btn-primary.btn-lg(href="/student/create") Add student
+                form.ml-auto(action="/student/search", method="GET")
+                    .col-xs-2.d-flex
+                        input#id.form-control(type="text", name="q" , value="")
+                        button.btn.btn-primary.ml-1 Search
+
+        table.table.table-striped
+            tr
+                th id
+                th Frist Name
+                th Last Name
+                th Phone
+                th Adress
+                th Email
+                th Description
+                th Action
+            each student in students
+                tr
+                    td=student.id
+                    td=student.fristname
+                    td=student.lastname
+                    td=student.phone
+                    td=student.address
+                    td=student.email
+                    td=student.description
+                    td
+                        button.btn.btn-danger.mx-1 Remove
+                        button.btn.btn-info Detail
