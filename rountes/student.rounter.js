@@ -1,19 +1,10 @@
 const express = require('express');
 const rounter = express.Router();
-const con = require('../models/db');
+const studentController = require('../controllers/student.controller');
 
 
 
 
-rounter.get('/', function(req,res){
-
-    var sql = "select * from student";
-    con.query(sql,function(err,result){
-        if(err) throw err;
-        res.render('student/index',{
-            students:result
-        });
-    });
-});
+rounter.get('/',studentController.getStudent);
 
 module.exports = rounter;

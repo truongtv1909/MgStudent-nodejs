@@ -2,6 +2,7 @@ const express = require('express');
 const studentRounter = require('./rountes/student.rounter');
 
 
+
 const app = express();
 const port = 3000;
 
