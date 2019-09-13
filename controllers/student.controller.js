@@ -1,12 +1,20 @@
 const con = require('../models/db');
 
 module.exports.getStudent = function(req,res){
+    let page = parseInt(req.query.page) || 1;
+    let perPage = 8;
+    let curenPage = page;
 
+    let start = (page -1)*perPage;
+    let end = page * perPage;
     var sql = "select * from student";
     con.query(sql,function(err,data){
         if(err) throw err;
+        let countPage = Math.ceil(data.length/perPage);
         res.render('student/index',{
-            students:data
+            students:data.slice(start,end),
+            countPages: countPage,
+            curenPage: curenPage
         });
     });
 }

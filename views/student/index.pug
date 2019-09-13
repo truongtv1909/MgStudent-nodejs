@@ -31,3 +31,13 @@ block common
                     td
                         a(href="/student/remove/"+student.id).btn.btn-danger.mx-1 Remove
                         a(href="/student/"+student.id).btn.btn-info Detail
+            nav(aria-label='Page navigation example').mt-1
+                nav(aria-label='Page navigation example').mt-1
+        ul.pagination
+            li.page-item
+                a.page-link(href='/student/?page='+((curenPage===1)?1:curenPage-1)) Previous
+            - for (var x = 1; x <= countPages; x++)
+                li.page-item
+                    a.page-link(href='/student/?page='+x)=x
+            li.page-item
+                a.page-link(href='/student/?page='+((curenPage===countPages)?countPages:curenPage+1)) Next
