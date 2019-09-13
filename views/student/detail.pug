@@ -2,6 +2,9 @@ extends ../layout/common
 block common
     .container
         h1 This is student detail component
+        if errData
+            each err in errData
+                .alert.alert-danger(role="alert")=err
         form(action="/student/update", method ="POST")
             .input-group.input-group-lg.mb-3
                 .input-group-prepend 
@@ -14,7 +17,7 @@ block common
             .input-group.input-group-lg.mb-3
                 .input-group-prepend 
                     span.input-group-text Last name
-                input.form-control(type="text",name = "lastname", value=''+students.lastname)
+                input.form-control(type="text",name = "lastname", value=''+(students.lastname)?students.lastname:date.lastname)
             .input-group.input-group-lg.mb-3
                 .input-group-prepend 
                     span.input-group-text Phone

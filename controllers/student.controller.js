@@ -41,9 +41,7 @@ module.exports.getCreateStudent = function(req,res){
 }
 
 module.exports.postCreateStudent = function(req,res){
-    let str = ` '${req.body.fristname}','${req.body.lastname}','${req.body.phone}',
-    '${req.body.address}','${req.body.email}','${req.body.description}'`;
-    var sql = 'INSERT INTO student(fristname, lastname, phone, address, email, description) VALUES ('+str+')'
+    var sql = res.locals.studentHasValidate;
     con.query(sql,function(err,data){
         if(err) throw err;
         res.redirect('/student'); 
@@ -63,9 +61,7 @@ module.exports.getDetail = function(req,res){
 }
 
 module.exports.postUpdate = function(req,res){
-    var sql = `UPDATE student SET fristname= '${req.body.fristname}',lastname= '${req.body.lastname}',
-    phone= '${req.body.phone}',address= '${req.body.address}',email= '${req.body.email}',
-    description= '${req.body.description}' WHERE id = ${req.body.id} `;
+    var sql = res.locals.studentHasValidate;
     con.query(sql,function(err,data){
         if(err) throw err;
         res.redirect('/student');

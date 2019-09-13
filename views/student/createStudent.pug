@@ -2,31 +2,34 @@ extends ../layout/common
 block common
     .container
         h1 This is create student component
+        if errData
+            each err in errData
+                .alert.alert-danger(role="alert")=err
         form(action="/student/createStudent" method="post")
             .input-group.input-group.mb-2
                 .input-group-prepend 
                     span.input-group-text Frist name
-                input.form-control(type="text", name ="fristname",value=value?value.na:"")
+                input.form-control(type="text", name ="fristname",value=data?data.fristname:"")
             .input-group.input-group.mb-2
                 .input-group-prepend 
                     span.input-group-text Last name
-                input.form-control(type="text", name ="lastname")
+                input.form-control(type="text", name ="lastname",value=data?data.lastname:"")
             .input-group.input-group.mb-2
                 .input-group-prepend 
                     span.input-group-text Phone
-                input.form-control(type="text", name ="phone")
+                input.form-control(type="text", name ="phone",value=data?data.phone:"")
             .input-group.input-group.mb-2
                 .input-group-prepend 
                     span.input-group-text Address
-                input.form-control(type="text", name ="address")
+                input.form-control(type="text", name ="address",value=data?data.address:"")
             .input-group.input-group.mb-2
                 .input-group-prepend 
                     span.input-group-text Email
-                input.form-control(type="text", name ="email")
+                input.form-control(type="text", name ="email",value=data?data.email:"")
             .input-group
                 .input-group-prepend
                     span.input-group-text Description
-                textarea.form-control(aria-label='With textarea',name="description")
+                textarea.form-control(aria-label='With textarea',name="description",value=data?data.description:"")=data?data.email:""
             
             button.btn.btn-primary.mt-2 Create
             a.btn.btn-danger.mt-2.ml-1(href="/student") Cancel
