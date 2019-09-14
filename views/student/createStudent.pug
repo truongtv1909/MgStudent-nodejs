@@ -1,5 +1,12 @@
 extends ../layout/common
 block common
+    nav.navbar.navbar-expand-lg.navbar-light.bg-info
+        a.navbar-brand(href='#')
+            img(src="/logo/logo.jpg", alt="").d-inline-block.align-top.nav-img.mr-1
+        .collapse.navbar-collapse
+            .navbar-nav
+                a.nav-item.nav-link(href='/') Home
+                a.nav-item.nav-link(href='/student') Student
     .container
         h1 This is create student component
         if errData
