@@ -1,4 +1,4 @@
-const con = require('../models/db')
+const con = require('../models/db');
 
 module.exports.getStudent = function(req,res){
     let page = parseInt(req.query.page) || 1;
