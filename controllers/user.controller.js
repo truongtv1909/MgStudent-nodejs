@@ -58,18 +58,7 @@ module.exports.postCreateUser = function(req,res){
 }
 
 module.exports.postUpdateUser = function(req, res){
-    let value = req.body;
-    let validateLogo;
-    let sql;
-    if(req.file){
-        validateLogo = req.file.path.split('\\').slice(1).join('\\\\');
-        sql = `UPDATE user SET name = '${value.name}',age = ${value.age},email = '${value.email}',
-    password = '${value.password}',logo = '${validateLogo}'  WHERE id = ${value.id}`;
-    }else{
-        // validateLogo = value.logo.split('\\').join('\\\\');
-        sql = `UPDATE user SET name = '${value.name}',age = ${value.age},email = '${value.email}',
-    password = '${value.password}'  WHERE id = ${value.id}`;
-    }
+    let sql = res.locals.validateUpdate;
     con.query(sql,function(err,data){
         if(err) throw err;
         res.redirect('/user');

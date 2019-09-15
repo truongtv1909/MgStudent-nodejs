@@ -13,6 +13,6 @@ rounter.get('/remove/:userId',userController.getRemove);
 rounter.get('/create',userController.getCreate);
 
 rounter.post('/create',upload.single('logo'),validateUser.validateCreateUser,userController.postCreateUser);
-rounter.post('/update',upload.single('logo'),userController.postUpdateUser);
+rounter.post('/update',upload.single('logo'),validateUser.validateUpdateUser,userController.postUpdateUser);
 
 module.exports = rounter;
