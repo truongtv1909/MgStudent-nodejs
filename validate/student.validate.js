@@ -42,8 +42,9 @@ module.exports.validateCreatStudent = function(req,res,next){
 
 module.exports.validateUpdateStudent = function(req,res,next){
     let err =[];
-    var phoneno = /^\d{10}$/;
-    var phone = (req.body.phone);
+    let phoneno = /^\d{10}$/;
+    let phone = (req.body.phone);
+    let draft = req.body; 
     if(!req.body.fristname){
         err.push('Empty frist name');
     }
@@ -74,15 +75,10 @@ module.exports.validateUpdateStudent = function(req,res,next){
             let student = data[0];
             res.render('student/detail',{
                 students:student,
-                errData: err
+                errData: err,
+                draft: draft
             })
         })
-
-
-        // res.render('student/detail',{
-        //     errData: err,
-        //     data: req.body
-        // })
         return;
     }
 

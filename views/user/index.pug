@@ -1,0 +1,36 @@
+extends ../layout/common
+block common
+    nav.navbar.navbar-expand-lg.navbar-light.bg-info
+        a.navbar-brand(href='#')
+            img(src="/logo/logo.jpg", alt="").d-inline-block.align-top.nav-img.mr-1
+        .collapse.navbar-collapse
+            .navbar-nav
+                a.nav-item.nav-link(href='/') Home
+                a.nav-item.nav-link(href='/student') User
+    .container
+        h1 This is user component
+        .d-flex.align-items-center
+                a.btn.btn-primary.btn-lg(href="#") Add user
+                form.ml-auto(action="/user/search", method="GET")
+                    .col-xs-2.d-flex
+                        input.form-control(type="text", name="q",placeholder="User name, email")
+                        button.btn.btn-primary.ml-1 Search
+        table.table.table-striped
+            tr.table-primary
+                th Avatar
+                th Full name
+                th age
+                th Email
+                th Password
+                th Action
+            each user in users
+                tr
+                    td
+                        img(src="/image/avatar/logo.jpg", alt="").avatar-img
+                    td=user.name
+                    td=user.age
+                    td=user.email
+                    td=user.password
+                    td
+                        a(href="#").btn.btn-danger.mx-1 Remove
+                        a(href="#").btn.btn-info Detail

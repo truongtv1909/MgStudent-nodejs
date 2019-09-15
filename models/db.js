@@ -1,4 +1,3 @@
-
 const mysql = require('mysql');
 
 const con = mysql.createConnection({
@@ -8,12 +7,12 @@ const con = mysql.createConnection({
     database:"dbstd"
 });
 con.connect(function(err){
-if(err){
-    throw err;
-}
-else{
-    console.log("conect success.");
-}
+    if(err){
+        throw err;
+    }
+    else{
+        console.log("conect success.");
+    }
 })
 
 

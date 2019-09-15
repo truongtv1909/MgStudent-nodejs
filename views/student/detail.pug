@@ -20,26 +20,26 @@ block common
             .input-group.input-group-lg.mb-3
                 .input-group-prepend 
                     span.input-group-text Frist name
-                input.form-control(type="text",name = "fristname", value=''+students.fristname?students.fristname:'')
+                input.form-control(type="text",name = "fristname", value=''+students.fristname?students.fristname:draft?draft.fristname:'')
             .input-group.input-group-lg.mb-3
                 .input-group-prepend 
                     span.input-group-text Last name
-                input.form-control(type="text",name = "lastname", value=''+(students.lastname)?students.lastname:'')
+                input.form-control(type="text",name = "lastname", value=''+students.lastname?students.lastname:draft?draft.lastname:'')
             .input-group.input-group-lg.mb-3
                 .input-group-prepend 
                     span.input-group-text Phone
-                input.form-control(type="text",name = "phone", value=''+students.phone?students.phone:'')
+                input.form-control(type="text",name = "phone", value=''+students.phone?students.phone:draft?draft.phone:'')
             .input-group.input-group-lg.mb-3
                 .input-group-prepend 
                     span.input-group-text Address
-                input.form-control(type="text",name = "address", value=''+students.address?students.address:'')
+                input.form-control(type="text",name = "address", value=''+students.address?students.address:draft?draft.address:'')
             .input-group.input-group-lg.mb-3
                 .input-group-prepend 
                     span.input-group-text Email
-                input.form-control(type="text",name = "email", value=''+students.email?students.email:'')
+                input.form-control(type="text",name = "email", value=''+students.email?students.email:draft?draft.email:'')
             .input-group.input-group-lg.mb-3
                     .input-group-prepend
                         span.input-group-text Description
-                    textarea.form-control(aria-label='With textarea', name = "description")=students.description?students.description:''
+                    textarea.form-control(aria-label='With textarea', name = "description")=students.description?students.description:draft?draft.description:''
             a.btn.btn-danger.mt-1(href="/student") Back
             button.btn.btn-primary.mt-1.ml-1 Update

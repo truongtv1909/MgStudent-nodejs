@@ -69,7 +69,6 @@ module.exports.postUpdate = function(req,res){
 }
 
 module.exports.getRemove = function(req,res){
-    console.log(req.params);
     var sql = `DELETE FROM student WHERE id= ${req.params.id}`;
     con.query(sql,function(err, data){
         if(err) throw err;

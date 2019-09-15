@@ -1,5 +1,6 @@
 const express = require('express');
 const studentRounter = require('./rountes/student.rounter');
+const userRounter = require('./rountes/user.rounter');
 const bodyParser = require('body-parser');
 
 
@@ -13,6 +14,7 @@ app.set('views','./views');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/student',studentRounter);
+app.use('/user',userRounter);
 
 app.get('/',function(req, res){
     res.render('index',{
