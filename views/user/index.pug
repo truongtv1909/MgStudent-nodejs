@@ -6,11 +6,11 @@ block common
         .collapse.navbar-collapse
             .navbar-nav
                 a.nav-item.nav-link(href='/') Home
-                a.nav-item.nav-link(href='/student') User
+                a.nav-item.nav-link(href='/user') User
     .container
         h1 This is user component
         .d-flex.align-items-center
-                a.btn.btn-primary.btn-lg(href="#") Add user
+                a.btn.btn-primary.btn-lg(href="/user/create") Add user
                 form.ml-auto(action="/user/search", method="GET")
                     .col-xs-2.d-flex
                         input.form-control(type="text", name="q",placeholder="User name, email")
@@ -32,5 +32,5 @@ block common
                     td=user.email
                     td=user.password
                     td
-                        a(href="#").btn.btn-danger.mx-1 Remove
-                        a(href="#").btn.btn-info Detail
+                        a(onclick="return confirm('Are you sure remove?')",href="/user/remove/"+user.id).btn.btn-danger.mx-1 Remove
+                        a(href="/user/detail/"+user.id).btn.btn-info Detail

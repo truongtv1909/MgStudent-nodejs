@@ -1,0 +1,41 @@
+extends ../layout/common
+block common
+    nav.navbar.navbar-expand-lg.navbar-light.bg-info
+        a.navbar-brand(href='#')
+            img(src="/logo/logo.jpg", alt="").d-inline-block.align-top.nav-img.mr-1
+        .collapse.navbar-collapse
+            .navbar-nav
+                a.nav-item.nav-link(href='/') Home
+                a.nav-item.nav-link(href='/user') User
+    .container
+        h1 This is user-detal component
+        if errData
+            each err in errData
+                .alert.alert-danger(role="alert")=err
+        form(action="/user/update", method ="POST")
+            .input-group.input-group-lg.mb-3
+                .input-group-prepend 
+                    span.input-group-text User ID
+                input.form-control(type="text",name ="id", value=''+user.id?user.id:'')
+            .input-group.input-group-lg.mb-3
+                .input-group-prepend 
+                    span.input-group-text User name
+                input.form-control(type="text",name = "name", value=''+user.name?user.name:'')
+            .input-group.input-group-lg.mb-3
+                .input-group-prepend 
+                    span.input-group-text Age
+                input.form-control(type="text",name = "age", value=''+user.age?user.age:'')
+            .input-group.input-group-lg.mb-3
+                .input-group-prepend 
+                    span.input-group-text Email
+                input.form-control(type="text",name = "email", value=''+user.email?user.email:'')
+            .input-group.input-group-lg.mb-3
+                .input-group-prepend 
+                    span.input-group-text Password
+                input.form-control(type="text",name = "password", value=''+user.password?user.password:'')
+            .input-group.input-group-lg.mb-3
+                .input-group-prepend 
+                    span.input-group-text Logo
+                input.form-control(type="text",name = "logo", value=''+user.logo?user.logo:'')
+            a.btn.btn-danger.mt-1(href="/user") Cancel
+            button.btn.btn-primary.mt-1.ml-1 Update
