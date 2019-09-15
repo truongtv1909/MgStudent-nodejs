@@ -1,0 +1,28 @@
+extends ../layout/common
+block common
+    nav.navbar.navbar-expand-lg.navbar-light.bg-info
+        a.navbar-brand(href='#')
+            img(src="/logo/logo.jpg", alt="").d-inline-block.align-top.nav-img.mr-1
+        .collapse.navbar-collapse
+            .navbar-nav
+                a.nav-item.nav-link(href='/') Home
+                a.nav-item.nav-link(href='/') menu
+    .container
+        h1 Login form
+        if err
+            .alert.alert-danger(role="alert")=err
+        form(action="",method="post")
+            .input-group.input-group.mb-2
+                .input-group-prepend 
+                    span.input-group-text Email
+                input.form-control(type="text", name ="email", value=''+value?value:'')
+            .input-group.input-group.mb-2
+                .input-group-prepend 
+                    span.input-group-text Password
+                input.form-control(type="password", name ="password")
+            
+            
+            button.btn.btn-primary.mt-1
+                h3  Login
+            a.btn.btn-danger.mt-1.ml-1(href="/") 
+                h3 Cancel
