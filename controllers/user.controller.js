@@ -50,13 +50,7 @@ module.exports.getCreate = function(req,res){
 }
 
 module.exports.postCreateUser = function(req,res){
-    let data = req.body;
-    let logo;
-    if(req.file){
-        logo = req.file.path.split('\\').slice(1).join('\\\\');
-    }
-    let sql = `INSERT INTO user(name, age, email, password, logo) 
-    VALUES ('${data.name}','${data.age}','${data.email}','${data.password}','${logo}') `;
+    let sql = res.locals.userHasValidate;
     con.query(sql,function(err,datas){
         if(err) throw err;
         res.redirect('/user');
