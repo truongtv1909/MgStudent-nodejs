@@ -51,8 +51,12 @@ module.exports.getCreate = function(req,res){
 
 module.exports.postCreateUser = function(req,res){
     let data = req.body;
+    let logo;
+    if(req.file){
+        logo = req.file.path.split('\\').slice(1).join('\\\\');
+    }
     let sql = `INSERT INTO user(name, age, email, password, logo) 
-    VALUES ('${data.name}','${data.age}','${data.email}','${data.password}','${data.logo}') `;
+    VALUES ('${data.name}','${data.age}','${data.email}','${data.password}','${logo}') `;
     con.query(sql,function(err,datas){
         if(err) throw err;
         res.redirect('/user');
@@ -61,8 +65,17 @@ module.exports.postCreateUser = function(req,res){
 
 module.exports.postUpdateUser = function(req, res){
     let value = req.body;
-    let sql = `UPDATE user SET name = '${value.name}',age = ${value.age},email = '${value.email}',
-    password = '${value.password}',logo = '${value.logo}'  WHERE id = ${value.id}`;
+    let validateLogo;
+    let sql;
+    if(req.file){
+        validateLogo = req.file.path.split('\\').slice(1).join('\\\\');
+        sql = `UPDATE user SET name = '${value.name}',age = ${value.age},email = '${value.email}',
+    password = '${value.password}',logo = '${validateLogo}'  WHERE id = ${value.id}`;
+    }else{
+        // validateLogo = value.logo.split('\\').join('\\\\');
+        sql = `UPDATE user SET name = '${value.name}',age = ${value.age},email = '${value.email}',
+    password = '${value.password}'  WHERE id = ${value.id}`;
+    }
     con.query(sql,function(err,data){
         if(err) throw err;
         res.redirect('/user');

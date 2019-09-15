@@ -1,5 +1,8 @@
 const express = require('express');
 const rounter = express.Router();
+const multer = require('multer');
+
+const upload = multer({ dest: 'public/upload'});
 const userController = require('../controllers/user.controller');
 
 rounter.get('/',userController.getIndex);
@@ -8,7 +11,7 @@ rounter.get('/detail/:userId',userController.getDetail);
 rounter.get('/remove/:userId',userController.getRemove);
 rounter.get('/create',userController.getCreate);
 
-rounter.post('/create',userController.postCreateUser);
-rounter.post('/update',userController.postUpdateUser);
+rounter.post('/create',upload.single('logo'),userController.postCreateUser);
+rounter.post('/update',upload.single('logo'),userController.postUpdateUser);
 
 module.exports = rounter;

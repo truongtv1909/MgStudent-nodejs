@@ -12,7 +12,7 @@ block common
         if errData
             each err in errData
                 .alert.alert-danger(role="alert")=err
-        form(action="/user/update", method ="POST")
+        form(action="/user/update", method ="POST",enctype="multipart/form-data")
             .input-group.input-group-lg.mb-3
                 .input-group-prepend 
                     span.input-group-text User ID
@@ -35,7 +35,11 @@ block common
                 input.form-control(type="text",name = "password", value=''+user.password?user.password:'')
             .input-group.input-group-lg.mb-3
                 .input-group-prepend 
-                    span.input-group-text Logo
-                input.form-control(type="text",name = "logo", value=''+user.logo?user.logo:'')
+                    span.input-group-text logo
+                        img(src="/"+user.logo, alt="").avatars-img.ml-4
+            .input-group.input-group.mb-2
+                .input-group-prepend 
+                    span.input-group-text New logo
+                        input.form-control-file(type="file", name ="logo").ml-2
             a.btn.btn-danger.mt-1(href="/user") Cancel
             button.btn.btn-primary.mt-1.ml-1 Update

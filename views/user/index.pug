@@ -26,7 +26,7 @@ block common
             each user in users
                 tr
                     td
-                        img(src="/image/avatar/logo.jpg", alt="").avatar-img
+                        img(src="/"+user.logo, alt="").avatar-img
                     td=user.name
                     td=user.age
                     td=user.email

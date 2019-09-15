@@ -12,7 +12,7 @@ block common
         if errData
             each err in errData
                 .alert.alert-danger(role="alert")=err
-        form(action="/user/create" method="post")
+        form(action="/user/create", method="post",enctype="multipart/form-data")
             .input-group.input-group.mb-2
                 .input-group-prepend 
                     span.input-group-text Name
@@ -31,7 +31,7 @@ block common
                 input.form-control(type="text", name ="password",value=data?data.address:"")
             .input-group.input-group.mb-2
                 .input-group-prepend 
-                    span.input-group-text Logo
-                input.form-control(type="text", name ="logo",value=data?data.email:"")
+                    span.input-group-text Avatar
+                        input.form-control-file(type="file", name ="logo").ml-1
             button.btn.btn-primary.mt-2 Create
             a.btn.btn-danger.mt-2.ml-1(href="/user") Cancel
