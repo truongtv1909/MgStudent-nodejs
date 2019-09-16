@@ -29,7 +29,6 @@ module.exports.validateCreateUser = function(req,res,next){
         return;
     }
     let slqEmail = `SELECT email FROM user where email = '${data.email}'`;
-    console.log(slqEmail);
     con.query(slqEmail,function(errs,arreEmail){
         if(errs) throw errs;
         if(arreEmail.length){ 
