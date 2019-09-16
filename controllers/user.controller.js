@@ -59,8 +59,21 @@ module.exports.postCreateUser = function(req,res){
 
 module.exports.postUpdateUser = function(req, res){
     let sql = res.locals.validateUpdate;
-    con.query(sql,function(err,data){
-        if(err) throw err;
+    let dataUpdate = res.locals.value;
+    let err = [];
+    con.query(sql,function(errUpdate,data){
+        if(errUpdate){
+            err.push('Email already exist! Please input orther email...');
+            let id = dataUpdate.id;
+            let errEmail = `SELECT * FROM user WHERE id = ${id}`;
+            con.query(errEmail,function(emErr,emData){
+                res.render('user/detail',{
+                    errData:err,
+                    user:emData[0]
+                })
+            })
+            return;
+        }
         res.redirect('/user');
     });
 }
