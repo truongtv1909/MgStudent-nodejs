@@ -15,7 +15,7 @@ module.exports.postLogin = function(req,res){
         })
         if(!arr){
             res.render('auth/index',{
-                err: 'User does not exist',
+                err: 'User does not exist!',
                 value: email
             })
             return;
