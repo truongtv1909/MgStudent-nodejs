@@ -1,6 +1,7 @@
 const con = require('../models/db');
 
 module.exports.getLogin = function(req,res){
+    res.clearCookie('uId');
     res.render('auth/index');
 }
 module.exports.postLogin = function(req,res){

@@ -6,11 +6,11 @@ block common
         .collapse.navbar-collapse
             .navbar-nav
                 a.nav-item.nav-link(href='/') Home
-                a.nav-item.nav-link(href='/auth') Login/Logout
+                a.nav-item.nav-link(href='/auth')= `${userData?'Logout':'Login'}`
                 a.nav-item.nav-link(href='/user') User
                 a.nav-item.nav-link(href='/student') Student
 
     .container
-        h1  hello app manager
-        a(href="/student") Student
-    
+        h1 Hi. 
+          samp(style='color: red')=` ${userData?userData.name:'You'} !`
+        h1(style='color: green')= `${userData?'Wellcome to manager app...':'Please login to continus..'}`

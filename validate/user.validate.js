@@ -28,13 +28,11 @@ module.exports.validateCreateUser = function(req,res,next){
         });
         return;
     }
-    let slqEmail = "SELECT email FROM user";
+    let slqEmail = `SELECT email FROM user where email = '${data.email}'`;
+    console.log(slqEmail);
     con.query(slqEmail,function(errs,arreEmail){
         if(errs) throw errs;
-        let findemail = arreEmail.find(function(e){  
-            return e.email === data.email;
-        });
-        if(findemail){ 
+        if(arreEmail.length){ 
             err.push('Email already exist! Please input other email...');
             res.render('user/create',{
                 errData:err,
@@ -77,20 +75,6 @@ module.exports.validateUpdateUser = function(req,res,next){
         });
         return;
     }
-    // let sqlemail = `SELECT email FROM user`;
-    // con.query(sqlemail,function(errs,arrEmail){
-    //     if(errs) throw errs;
-    //     console.log(arrEmail);
-    //     let findEmail = arrEmail.find(function(e){
-    //         return e.email === value.email;
-    //     })
-    //     if(findEmail){
-    //         if(findEmail.email === )
-    //     }
-
-    // })
-    // return;
-
 
     if(req.file){
         validateLogo = req.file.path.split('\\').slice(1).join('\\\\');
